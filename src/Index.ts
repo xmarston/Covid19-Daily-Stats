@@ -6,12 +6,6 @@ import mysql from 'mysql'
 
 betterLogging(console);
 
-interface Stats {
-  country: string
-  todayCases: number
-  todayDeaths: number
-}
-
 let config: Object = YAML.parse(fs.readFileSync('settings.yml', 'utf8'));
 const URL: string = config['url']
 const databaseConfig: Object = config['db']
