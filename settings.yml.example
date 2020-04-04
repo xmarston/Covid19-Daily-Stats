@@ -1,0 +1,6 @@
+db:
+  host: HOSTNAME
+  user: USERNAME
+  password: PASSWORD
+  database: DATABASE_NAME
+url: DATASOURCE URL
