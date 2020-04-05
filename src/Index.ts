@@ -25,6 +25,10 @@ const today = (): string => {
   return `${year}-${month}-${day}`
 }
 
+const escapeString = (rawString): string => {
+  return rawString.replace(/"/g, '\\"')
+}
+
 (async () => {
 
   connection.connect()
@@ -32,7 +36,7 @@ const today = (): string => {
   let response: AxiosResponse<any> = await axios.get(URL)
   let countries: Array<Object> = response.data
   countries.forEach((element: Stats) => {
-    connection.query(`INSERT INTO daily_stats VALUES(0, "${element.country}", "${today()}", ${element.todayCases}, ${element.todayDeaths}, CURRENT_TIMESTAMP, NULL) ON DUPLICATE KEY UPDATE cases=${element.todayCases}, deaths=${element.todayDeaths}, updated_at=CURRENT_TIMESTAMP`, (error, results, fields) => {
+    connection.query(`INSERT INTO daily_stats VALUES(0, "${escapeString(element.country)}", "${today()}", ${element.todayCases}, ${element.todayDeaths}, CURRENT_TIMESTAMP, NULL) ON DUPLICATE KEY UPDATE cases=${element.todayCases}, deaths=${element.todayDeaths}, updated_at=CURRENT_TIMESTAMP`, (error, results, fields) => {
       if (error) throw error
       console.log(`affectedRows: ${results.affectedRows}, insertId: ${results.insertId}`)
     })
