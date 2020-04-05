@@ -6,7 +6,7 @@ import mysql from 'mysql'
 
 betterLogging(console);
 
-let config: Object = YAML.parse(fs.readFileSync('settings.yml', 'utf8'));
+let config: Object = YAML.parse(fs.readFileSync(__dirname + '/settings.yml', 'utf8'));
 const URL: string = config['url']
 const databaseConfig: Object = config['db']
 const connection: any = mysql.createConnection({
@@ -26,6 +26,7 @@ const today = (): string => {
 }
 
 (async () => {
+
   connection.connect()
 
   let response: AxiosResponse<any> = await axios.get(URL)
@@ -38,4 +39,5 @@ const today = (): string => {
   });
 
   connection.end()
+
 })()
