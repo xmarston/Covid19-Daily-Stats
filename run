@@ -2,4 +2,5 @@
 
 DIR=$PWD
 cd $DIR
+npx tsc
 node dist/Index.js
