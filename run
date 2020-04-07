@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DIR=$PWD
-cd $DIR
+BASEDIR=$(dirname "$0")
+cd $BASEDIR
 npx tsc
 node dist/Index.js
