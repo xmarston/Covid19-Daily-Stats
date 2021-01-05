@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.636.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "better-logging": "^3.5.0",
     "mysql": "^2.18.1",
     "ts-mockito": "^2.5.0",
